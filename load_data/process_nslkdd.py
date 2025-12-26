@@ -1,9 +1,4 @@
 """
-@Time    : 2021/7/14 9:15
--------------------------------------------------
-@Author  : sailorlee(lizeyi)
-@email   : chrislistudy@163.com
--------------------------------------------------
 @FileName: process_nslkdd.py
 @Software: PyCharm
 """
@@ -123,7 +118,7 @@ def main_process_nsl(i):
         else:
             minmax_scale_values(training_df, testing_df, column)
 
-    # 处理了第一个文件夹training
+    # training
     X_train_malware = training_df[training_df['label'] != 'normal']
     X_train_normal = training_df[training_df['label'] == 'normal']
     # print(X_train_normal.columns)
@@ -133,7 +128,7 @@ def main_process_nsl(i):
     X_train_normal = X_train_normal.drop("num",axis=1)
     X_train_malware = X_train_malware.drop("num",axis=1)
 
-    # 处理第二个文件夹testing 1为恶意
+    # testing 1
 
     X_test_normal = testing_df[testing_df['label'] == 'normal']
     X_test_normal = X_test_normal.drop("label", axis=1)
@@ -189,7 +184,7 @@ def process_tsne_nsl(num):
         else:
             minmax_scale_values(training_df, testing_df, column)
 
-    # 处理了第一个文件夹training
+    # training
     X_train_malware = training_df[training_df['label'] != 'normal']
     X_train_normal = training_df[training_df['label'] == 'normal']
     # print(X_train_normal.columns)
@@ -199,7 +194,7 @@ def process_tsne_nsl(num):
     X_train_normal = X_train_normal.drop("num",axis=1)
     X_train_malware = X_train_malware.drop("num",axis=1)
 
-    # 处理第二个文件夹testing 1为恶意
+    # testing
 
     X_test_normal = testing_df[testing_df['label'] == 'normal']
     X_test_normal = X_test_normal.drop("label", axis=1)
@@ -210,7 +205,7 @@ def process_tsne_nsl(num):
     X_test_malware = X_test_malware.drop("label", axis=1)
     X_test_malware = X_test_malware.drop("num", axis=1)
 
-    #整合一起
+    #combine
     normal = np.vstack((X_train_normal,X_test_normal))
     malware = np.vstack((X_train_malware,X_test_malware))
     np.random.shuffle(malware)

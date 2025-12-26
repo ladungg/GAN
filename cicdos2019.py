@@ -1,9 +1,4 @@
 """
-@Time    : 2022/8/14 20:16
--------------------------------------------------
-@Author  : sailorlee(lizeyi)
-@email   : sailorlee31@gmail.com
--------------------------------------------------
 @FileName: cicdos2019.py
 @Software: PyCharm
 """

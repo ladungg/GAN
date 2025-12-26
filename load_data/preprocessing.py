@@ -104,12 +104,12 @@ def process_tsne_unsw(num):
         elif not column == label_column:
             minmax_scale_values(training_df, testing_df, column)
 
-    # 处理了第一个文件夹training
+    # training
     X_train_malware = training_df[training_df['label'] != 0]
     X_train_normal = training_df[training_df['label'] == 0]
     X_train_normal = X_train_normal.drop("label",axis=1)
     X_train_malware = X_train_malware.drop("label",axis=1)
-    # 处理第二个文件夹testing 1为恶意
+    # testing 1
     X_test_malware = testing_df[testing_df['label'] != 0]
     X_test_normal = testing_df[testing_df['label'] == 0]
 
@@ -141,7 +141,6 @@ def main_process_unsw(i):
     training_df = pd.DataFrame(training_df)
     testing_df = pd.DataFrame(testing_df)
     # print(training_df)
-    # 把数据集合在一起，目前还没有用过
     df = pd.concat([training_df, testing_df])
     # print(df)
     df = df.drop("attack_cat", axis=1)
@@ -157,12 +156,12 @@ def main_process_unsw(i):
         elif not column == label_column:
             minmax_scale_values(training_df, testing_df, column)
 
-    # 处理了第一个文件夹training
+    # training
     X_train_malware = training_df[training_df['label'] != 0]
     X_train_normal = training_df[training_df['label'] == 0]
     X_train_normal = X_train_normal.drop("label",axis=1)
     X_train_malware = X_train_malware.drop("label",axis=1)
-    # 处理第二个文件夹testing 1为恶意
+    # testing 1
     X_test_malware = testing_df[testing_df['label'] != 0]
     X_test_normal = testing_df[testing_df['label'] == 0]
 
@@ -193,15 +192,15 @@ def main_process_unsw(i):
     #X_test = X_test.drop("id",axis=1)
     print('x_test:',x_test.shape)
     #print('y_test:',y_test.shape)
-    print('训练集中的正常流量：',train_normal.shape)
-    #print('训练集中的恶意流量：',X_train_malware.shape)
+    print('Training ',train_normal.shape)
+    #print('',X_train_malware.shape)
 
-    #print('测试集中的流量形状：',X_test.shape)
+    #print('',X_test.shape)
     return train_normal,x_test,y_test
 
 def get_typeofmalware(malware_name):
     """
-    要将测试集中不同种类的恶意流量进行分离，并且标准化和归一化处理
+    
     :return:
     """
     training_df = pd.read_csv("./unsw/UNSW_NB15_training-set.csv")

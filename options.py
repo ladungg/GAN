@@ -1,10 +1,5 @@
 #-*-coding:GBK -*-
 """ Options
-@Time    : 2021/10/22 10:30
--------------------------------------------------
-@Author  : sailorlee(lizeyi)
-@email   : chrislistudy@163.com
--------------------------------------------------
 @FileName: option.py
 @Software: PyCharm
 Returns:
@@ -18,7 +13,7 @@ import torch
 
 class Options():
     """Options class
-    need change two arg：1 dataset 2 feature
+    need change two arg1 dataset 2 feature
     Returns:
         [argparse]: argparse containing train and test options
     """

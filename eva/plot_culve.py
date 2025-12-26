@@ -38,10 +38,10 @@ def plot_roc_auc(y_test, y_test_scores, name):
     plt.figure()
     plt.plot(fpr, tpr, 'darkorange', label='ROC (area = {0:.4f})'.format(roc_auc), lw=2)
     print('auc:',roc_auc)
-    plt.xlim([-0.05, 1.05])  # 设置x、y轴的上下限，以免和边缘重合，更好的观察图像的整体
+    plt.xlim([-0.05, 1.05])  
     plt.ylim([-0.05, 1.05])
     plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')  # 可以使用中文，但需要导入一些库即字体
+    plt.ylabel('True Positive Rate') 
     plt.title('%s ROC Curve' % name)
     plt.legend(loc="lower right")
     plt.show()
@@ -67,7 +67,6 @@ def plt_loss2(x1,y1,name):
     # ‘’g‘’代表“green”,表示画出的曲线是绿色，“-”代表画的曲线是实线，可自行选择，label代表的是图例的名称，一般要在名称前面加一个u，如果名称是中文，会显示不出来，目前还不知道怎么解决。
     p2 = pl.plot(x1, y1,'r-', label = u'%s_Net'%name)
     pl.legend()
-    #显示图例
     #p3 = pl.plot(x2,y2, 'b-', label = u'SCRCA_Net')
     #pl.legend()
     pl.xlabel(u'iters')
@@ -98,7 +97,7 @@ def plot_confusion_matrix(cm, savename, classes, title='Confusion Matrix'):
     plt.figure(figsize=(12, 8), dpi=100)
     np.set_printoptions(precision=2)
 
-    # 在混淆矩阵中每格的概率值
+    # normalize the confusion matrix
     ind_array = np.arange(len(classes))
     x, y = np.meshgrid(ind_array, ind_array)
     for x_val, y_val in zip(x.flatten(), y.flatten()):
@@ -130,8 +129,8 @@ def plot_confusion_matrix(cm, savename, classes, title='Confusion Matrix'):
 
 def plt_loss(num_epochs,Loss_list):
     """
-    :param num_epochs:训练轮数
-    :param Loss_list: 损失函数的list
+    :param num_epochs: epochs
+    :param Loss_list: loss list
     :return:
     """
     x2 = range(0, num_epochs)

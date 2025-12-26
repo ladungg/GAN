@@ -1,16 +1,11 @@
 """
-@Time    : 2021/10/22 10:30
--------------------------------------------------
-@Author  : sailorlee(lizeyi)
-@email   : chrislistudy@163.com
--------------------------------------------------
 @FileName: train.py
 @Software: PyCharm
 
-TRAIN FlowGANAnomaly
+TRAIN GAN
 . Example: Run the following command from the terminal.
     run train.py                             \
-        --model FlowGANAnomaly                        \
+        --model GAN                        \
         --batchsize 32                          \
         --isize 256                         \
         --nz 512                                \

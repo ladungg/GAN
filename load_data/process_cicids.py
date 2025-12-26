@@ -1,9 +1,4 @@
 """
-@Time    : 2021/7/14 15:06
--------------------------------------------------
-@Author  : sailorlee(lizeyi)
-@email   : chrislistudy@163.com
--------------------------------------------------
 @FileName: process_cicids.py
 @Software: PyCharm
 """
@@ -22,8 +17,8 @@ def test_bot():
 
 def get_malware(name):
     for info in os.listdir('../cicids2017/pcap_raw'):
-        domain = os.path.abspath(r'../cicids2017/pcap_raw')  # 获取文件夹的路径
-        info = os.path.join(domain, info)  # 将路径与文件名结合起来就是每个文件的完整路径
+        domain = os.path.abspath(r'../cicids2017/pcap_raw')
+        info = os.path.join(domain, info)  
         data = pd.read_csv(info)
         bot1 = data[data[' Label']== name]
         bot1.to_csv('../cicids2017/test_%s.csv'%name, mode='a', header=False)
@@ -93,9 +88,6 @@ def process_tsne_data():
 
     return x_test,y_test
 
-# ===========================================================================
-# -------------------------训练集和测试集分开获取------------------------------
-# ===========================================================================
 
 def process_cicids_train(i):
     training_df = pd.read_csv("./cicids2017/test_BENIGN.csv", header=None)
@@ -108,7 +100,6 @@ def process_cicids_train(i):
     training_normal_df = np.delete(training_normal_df, np.where(np.isinf(training_normal_df))[0], axis=0)
     # print(training_normal_df.shape)
     train_normal = training_normal_df[6000 * i:]
-    #归一化处理
     scaler = MinMaxScaler()
     train_normal = scaler.fit_transform(train_normal)
     y_train = np.zeros((len(train_normal), 1))
@@ -158,19 +149,17 @@ def process_cicids_test(i):
     y_test = np.vstack((y_test_normal, y_test_malware))
     print('y_test:', y_test.shape)
     print('X_test:',x_test.shape)
-    #归一化处理
+    # 
     scaler = MinMaxScaler()
     x_test = scaler.fit_transform(x_test)
     return x_test,y_test
 
-# ===========================================================================
-# -------------------------训练集和测试集同时获取------------------------------
-# ===========================================================================
+
 
 def main_process_cicids(i):
     # for info in os.listdir('../cicids2017'):
-    #     domain = os.path.abspath(r'../cicids2017')  # 获取文件夹的路径
-    #     info = os.path.join(domain, info)  # 将路径与文件名结合起来就是每个文件的完整路径
+    #     domain = os.path.abspath(r'../cicids2017') 
+    #     info = os.path.join(domain, info) 
     #     data = pd.read_csv(info)cicids2017/test_BENIGN.csv
 
     training_df = pd.read_csv("./cicids2017/test_BENIGN.csv",header=None)
@@ -249,7 +238,7 @@ def main_process_cicids(i):
     #print(X_test)
     #X_test = np.delete(X_test, np.where(np.isinf(X_test))[0], axis=0)
     print('X_test:',x_test.shape)
-    #归一化处理
+    #
     scaler = MinMaxScaler()
     train_normal = scaler.fit_transform(train_normal)
     x_test = scaler.fit_transform(x_test)
@@ -266,11 +255,6 @@ def main_process_cicids(i):
     #X_test.to_csv('../csv_data/X_test_cicids.csv')
     return train_normal,x_test,y_test,len(test_normal),len(test_malware)
 
-# ===========================================================================
-# -------------------------获取不同种类的恶意流量------------------------------
-# 下面是将dos攻击和web攻击进行合并，因此bot、dos和web三类攻击需要单独提取，其他恶意
-# 流量直接按照名字提取即可。
-# ===========================================================================
 
 def get_bot_malware():
     training_df = pd.read_csv("./cicids2017/bot.csv",header=None)
@@ -345,7 +329,7 @@ def get_web_malware():
 
 if __name__ == '__main__':
     #
-    # 获取不同分类恶意数据集进行
+    # 
     #
 
     # list_name = ['BENIGN', 'DoS GoldenEye', 'DoS Hulk', 'DoS Slowhttptest', 'FTP-Patator', 'Heartbleed', 'DoS slowloris', 'Infiltration',
