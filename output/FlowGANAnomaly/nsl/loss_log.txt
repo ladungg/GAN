@@ -54,3 +54,10 @@
    Avg Run Time (ms/batch): 13.024 roc: 0.943 max roc: 0.943
    Avg Run Time (ms/batch): 12.868 roc: 0.963 max roc: 0.963
    Avg Run Time (ms/batch): 12.774 roc: 0.971 max roc: 0.971
+
+================ Training Loss (Wed Jan 28 09:06:46 2026) ================
+   Avg Run Time (ms/batch): 11.487 roc: 0.632 max roc: 0.632
+   Avg Run Time (ms/batch): 11.762 roc: 0.627 max roc: 0.632
+   Avg Run Time (ms/batch): 10.941 roc: 0.901 max roc: 0.901
+   Avg Run Time (ms/batch): 12.929 roc: 0.813 max roc: 0.901
+   Avg Run Time (ms/batch): 11.444 roc: 0.905 max roc: 0.905

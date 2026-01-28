@@ -28,8 +28,8 @@ phase: train
 print_freq: 100
 proportion: 0.1
 resume: 
-w_adv: 1
+w_adv: 1.0
 w_con: 50
-w_enc: 1
+w_enc: 1.0
 workers: 8
 -------------- End ----------------
