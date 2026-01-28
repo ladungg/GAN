@@ -21,7 +21,7 @@ nc: 1
 ndf: 64
 ngf: 64
 ngpu: 1
-niter: 50
+niter: 5
 nz: 100
 outf: ./output
 phase: train

@@ -21,6 +21,8 @@ from lib.visualizer import Visualizer
 from lib.loss import l2_loss
 from lib.evaluate import evaluate
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+import json
 
 class BaseModel():
     """ Base Model for FlowGANAnomaly
@@ -380,6 +382,19 @@ class BaseModel():
             # Convert gt_labels to numpy if it's still a tensor
             gt_labels_np = self.gt_labels.cpu().numpy() if torch.is_tensor(self.gt_labels) else self.gt_labels
             auc = evaluate(gt_labels_np, prob, metric=self.opt.metric)
+       
+            # EXPORT
+            output_dir = os.path.join(self.opt.outf, self.opt.name)
+            os.makedirs(output_dir, exist_ok=True)
+
+            np.save(os.path.join(output_dir, "anomaly_scores.npy"), prob)
+
+            threshold = np.percentile(prob, 95)
+            y_pred = (prob >= threshold).astype(int)
+
+            cm = confusion_matrix(gt_labels_np, y_pred)
+            with open(os.path.join(output_dir, "confusion_matrix.json"), "w") as f:
+                json.dump(cm.tolist(), f)
 
             performance = OrderedDict([('Avg Run Time (ms/batch)', self.times), (self.opt.metric, auc)])
 
@@ -389,7 +404,7 @@ class BaseModel():
 
 ##
 class FlowGANAnomaly(BaseModel):
-    """FlowGANAnomaly Class
+    """GANAnomaly Class
     """
 
     @property

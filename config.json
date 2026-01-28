@@ -1,0 +1,39 @@
+{
+  "base": {
+    "dataset": "nsl",
+    "dataroot": "",
+    "batchsize": 64,
+    "workers": 8,
+    "droplast": true,
+    "isize": 32,
+    "nc": 1,
+    "nz": 100,
+    "ngf": 64,
+    "ndf": 64,
+    "extralayers": 0,
+    "device": "gpu",
+    "gpu_ids": "0",
+    "ngpu": 1,
+    "name": "experiment_name",
+    "model": "FlowGANAnomaly",
+    "outf": "./output",
+    "manualseed": -1,
+    "proportion": 0.1,
+    "metric": "roc"
+  },
+
+  "train": {
+    "feature": 116,
+    "print_freq": 100,
+    "load_weights": false,
+    "resume": "",
+    "phase": "train",
+    "iter": 0,
+    "niter": 5,
+    "beta1": 0.5,
+    "lr": 0.0002,
+    "w_adv": 1,
+    "w_con": 50,
+    "w_enc": 1
+  }
+}
