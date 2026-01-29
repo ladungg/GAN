@@ -64,7 +64,7 @@ def plot_ROC(y_test, recon_error_test,name):
 def plt_loss2(x1,y1,name):
     fig = plt.figure(figsize=(7, 5))
     #pl.plot(x,y,'g-',label=u'Dense_Unet(block layer=5)')`
-    # ‘’g‘’代表“green”,表示画出的曲线是绿色，“-”代表画的曲线是实线，可自行选择，label代表的是图例的名称，一般要在名称前面加一个u，如果名称是中文，会显示不出来，目前还不知道怎么解决。
+    # ''g'' đại diện cho "green", biểu thị đường cong vẽ ra là màu xanh lục, "-" đại diện cho đường cong là đường thẳng, có thể tự chọn, label đại diện cho tên chú giải, thường cần thêm "u" trước tên, nếu tên là tiếng Việt sẽ không hiển thị được, hiện tại chưa biết cách giải quyết.
     p2 = pl.plot(x1, y1,'r-', label = u'%s_Net'%name)
     pl.legend()
     #p3 = pl.plot(x2,y2, 'b-', label = u'SCRCA_Net')
@@ -169,11 +169,11 @@ def plot_box(losses_normal,losses_malware,name):
 if __name__ == '__main__':
     classes = ['A', 'B', 'C', 'D', 'E', 'F']
 
-    random_numbers = np.random.randint(6, size=50)  # 6个类别，随机生成50个样本
-    y_true = random_numbers.copy()  # 样本实际标签
-    random_numbers[:10] = np.random.randint(6, size=10)  # 将前10个样本的值进行随机更改
-    y_pred = random_numbers  # 样本预测标签
+    random_numbers = np.random.randint(6, size=50)  # 6 loại, tạo ngẫu nhiên 50 mẫu
+    y_true = random_numbers.copy()  # nhãn thực tế mẫu
+    random_numbers[:10] = np.random.randint(6, size=10)  # thay đổi ngẫu nhiên giá trị của 10 mẫu đầu tiên
+    y_pred = random_numbers  # nhãn dự đoán mẫu
 
-    # 获取混淆矩阵
+    # Lấy ma trận nhầm lẫn
     cm = confusion_matrix(y_true, y_pred)
     plot_confusion_matrix(cm, 'confusion_matrix.png',classes ,title='confusion matrix')

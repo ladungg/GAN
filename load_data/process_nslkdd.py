@@ -141,7 +141,7 @@ def main_process_nsl(i):
 
 
 
-    #整合一起
+    # Hợp nhất lại
     normal = np.vstack((X_train_normal,X_test_normal))
     malware = np.vstack((X_train_malware,X_test_malware))
     np.random.shuffle(malware)
