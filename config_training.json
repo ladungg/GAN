@@ -28,7 +28,7 @@
     "resume": "",
     "phase": "train",
     "iter": 0,
-    "niter": 5,
+    "niter": 30,
     "beta1": 0.5,
     "lr": 0.0002,
     "w_adv": 1.0,
